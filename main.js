@@ -38,7 +38,7 @@ function ativaLoader(ativo) {
     btnConsultarPerfis.
       setAttribute('aria-busy', 'true')
     btnConsultarPerfis.
-      textContent = 'Consultando CEP...'
+      textContent = 'Consultando Perfil...'
   } else {
     btnConsultarPerfis.removeAttribute('aria-busy')
     btnConsultarPerfis.
