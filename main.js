@@ -1,47 +1,61 @@
 import '@picocss/pico'
 import './style.css'
 
-const formConsultarPerfis = document.querySelector('#consultarPerfis')
-const inputPerfis = formConsultarPerfis.perfis // seleciona o input do cep a partir do formulário
+/* const formBuscarPerfis = document.querySelector('#BuscarPerfis');
+const inputPerfis = formBuscarPerfis.perfis ;
+const url = "https:// api.github.com/users";
+
+async function buscarPerfis(perfis) {
+
+
+}
+
+formBuscarPerfis.addEventListener("keyup", (e) ==>) */
+
+
+
+ const formBuscarPerfis = document.querySelector('#BuscarPerfis') 
+ const inputPerfis = formBuscarPerfis.Perfis  // seleciona o input do cep a partir do formulário
 const divDados = document.querySelector('#dados')
-const btnConsultarPerfis =
-  document.querySelector('#btnConsultarPerfis')
+const btnBuscarPerfis =
+  document.querySelector('#btnBuscarPerfis') 
 /* const loader =
   `<a href="#" aria-busy="true">
     Consultando CEP, aguarde...
   </a>` */
 
-formConsultarPerfis.addEventListener('submit', function (event) {
+ formBuscarPerfis.addEventListener('submit', function (event) { 
   event.preventDefault() // anula comportamento padrão de envio do form ao clicar no botão
   ativaLoader(true)
-  consultarPerfis(inputPerfis.value) // invoca a função passando o cep digitado por parâmetro
+  buscarPerfis(inputPerfis.value) // invoca a função passando o cep digitado por parâmetro
 })
 
-async function consultarPerfis(perfis) {
-  let response = await fetch(`https://api.github.com/users/<nome_usuario>`)
+async function buscarPerfis(perfis) {
+  let response = await fetch(`https://api.github.com/users/${perfis}`)
   let dadosPerfis = await response.json()
   if (dadosPerfis.erro) {
     divDados.innerHTML = `
-      <div class="erro">CEP não encontrado!</div>
+      <div class="erro">Perfil não encontrado!</div>
     `
   } else {
     divDados.innerHTML = `
-    <p> Nome: ${dadosUsuario.name}  </p>
-    <p> Localidade: ${dadosCep.localidade}  </p>
+    <p> Nome: ${dadosPerfis.name}  </p>
+    <p>: ${dadosPerfis.html_url}  </p>
+    <p>: ${dadosPerfis.avatar_url}  </p>
   `
   }
   ativaLoader(false)
 }
 
-function ativaLoader(ativo) {
+ function ativaLoader(ativo) {
   if (ativo) {
-    btnConsultarPerfis.
+    btnBuscarPerfis.
       setAttribute('aria-busy', 'true')
-    btnConsultarPerfis.
-      textContent = 'Consultando Perfil...'
+    btnBuscarPerfis.
+      textContent = 'Buscando Perfil...'
   } else {
-    btnConsultarPerfis.removeAttribute('aria-busy')
-    btnConsultarPerfis.
-      textContent = 'Consultar'
+    btnBuscarPerfis.removeAttribute('aria-busy')
+    btnBuscarPerfis.
+      textContent = 'Buscar'
   }
-}
+}  
