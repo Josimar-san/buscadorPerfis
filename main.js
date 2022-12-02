@@ -54,7 +54,7 @@ async function buscarPerfis(perfis) {
     btnBuscarPerfis.
       setAttribute('aria-busy', 'true')
     btnBuscarPerfis.
-      textContent = 'Buscando Perfil...'
+      textContent = 'Aguarde! localizando perfil …'
   } else {
     btnBuscarPerfis.removeAttribute('aria-busy')
     btnBuscarPerfis.
