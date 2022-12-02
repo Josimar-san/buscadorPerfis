@@ -39,11 +39,13 @@ async function buscarPerfis(perfis) {
     `
   } else {
     divDados.innerHTML = `
+    <p> Avatar   ${dadosPerfis.avatar_url}  </p> 
     <p> Nome: ${dadosPerfis.name}  </p>
-    <p>: ${dadosPerfis.html_url}  </p>
-    <p>: ${dadosPerfis.avatar_url}  </p>
+    <p> Perfil  ${dadosPerfis.html_url}  </p>
+    
   `
-  }
+  }  /* <p> Avatar   ${dadosPerfis.avatar_url}  </p>  // usar tag link  */
+      /* <p> : ${dadosPerfis.html_url}  </p>  </p>  // usar tag link  */
   ativaLoader(false)
 }
 
